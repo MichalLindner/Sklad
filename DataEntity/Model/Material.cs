@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataEntity.Model
 {
-    [Table ("Materials")]
+    [Table("Materials")]
 
     internal class Material
     {
@@ -19,6 +19,14 @@ namespace DataEntity.Model
         [StringLength(100, ErrorMessage = "Jméno nesmí být delší než 100 znaků.")]
         public string Name { get; set; } = "";
 
+        [Range(0, int.MaxValue, ErrorMessage = "Pojistná zásoba musí být kladné číslo.")]
+        public int SafetyStock { get; set; } = 0; //pojistná zásoba
+
+        [Range(0, int.MaxValue, ErrorMessage = "Množství na paletu musí být kladné číslo.")]
+        public int PalletCapacity { get; set; } = 0; //množství na paletu
+
+        [Column(TypeName = "data")]
+        public DateTime ReceoveOn (get; set; } = DateTime.Days; //Datum přijetí materiálu
 
     }
 }
